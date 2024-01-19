@@ -14,8 +14,8 @@ const ShortUrlSchema = Schema( {
 
 const shortUrl = model( 'ShortUrl', ShortUrlSchema );
 
-shortUrl.watch().on( 'change', change => {
-    console.log( 'Watching for', change );
-} )
+// shortUrl.watch().on( 'change', change => {
+//     console.log( 'Watching for', change );
+// } )
 
 module.exports = shortUrl;

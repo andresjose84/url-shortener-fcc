@@ -8,6 +8,9 @@ const validateUrl = ( req, res = response, next ) => {
             res.status( 403 ).json( {
                 error: 'invalid url'
             } );
+        } else {
+            console.log( 'url valid' );
+            next();
         }
     } catch ( error ) {
         console.log( 'error validating url', error );
@@ -15,8 +18,6 @@ const validateUrl = ( req, res = response, next ) => {
             error: 'invalid url'
         } );
     }
-    console.log( 'url valid' );
-    next();
 };
 
 module.exports = validateUrl;
