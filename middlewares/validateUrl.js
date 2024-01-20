@@ -6,7 +6,7 @@ const validateUrl = ( req, res = response, next ) => {
         const newUrl = new URL( req.body.url );
 
         if ( !isValidHttpUrl( newUrl ) ) {
-            res.status( 403 ).json( {
+            res.status( 200 ).json( {
                 error: 'invalid url'
             } );
         } else {
@@ -17,7 +17,7 @@ const validateUrl = ( req, res = response, next ) => {
         }
     } catch ( error ) {
         console.log( 'error validating url', error );
-        res.status( 403 ).json( {
+        res.status( 200 ).json( {
             error: 'invalid url'
         } );
     }
