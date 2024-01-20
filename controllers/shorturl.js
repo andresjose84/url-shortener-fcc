@@ -2,9 +2,6 @@ const { response } = require( 'express' );
 const { findLastDoc, createShortUrl, findUrl, findShortUrl } = require( '../helpers' );
 
 const shorturl = async ( req, res = response ) => {
-
-    console.log( req.body.url );
-
     try {
 
         const { url } = req.body;
@@ -12,12 +9,10 @@ const shorturl = async ( req, res = response ) => {
         const urlExist = await findUrl( url );
 
         if ( urlExist.length !== 0 ) {
-            console.log( 'found url' );
             res.status( 200 ).json( {
                 ...urlExist[ 0 ]._doc
             } );
         } else {
-            console.log( 'Saving...' );
             const shortUrl = await findLastDoc();
             const obj = {
                 original_url: url,
@@ -42,7 +37,6 @@ const shorturl = async ( req, res = response ) => {
 
 const getShortUrl = async ( req, res = response ) => {
     try {
-        console.log( req.params );
         const { short_url } = req.params;
         const original_url = await findShortUrl( { short_url } );
         if ( original_url ) {

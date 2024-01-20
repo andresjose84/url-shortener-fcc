@@ -3,8 +3,6 @@ const { response } = require( 'express' );
 const validateUrl = ( req, res = response, next ) => {
 
     try {
-        console.log( 'Validating URL', req.body.url );
-
         const newUrl = new URL( req.body.url );
 
         if ( !isValidHttpUrl( newUrl ) ) {
@@ -24,8 +22,10 @@ const validateUrl = ( req, res = response, next ) => {
 };
 
 function isValidHttpUrl ( newUrl ) {
+
     try {
-        return newUrl.protocol === 'http:' || newUrl.protocol === 'https:';
+        const search = newUrl.search === '';
+        return ( newUrl.protocol === 'http:' || newUrl.protocol === 'https:' ) && search;
     } catch ( err ) {
         return false;
     }
