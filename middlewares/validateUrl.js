@@ -10,7 +10,9 @@ const validateUrl = ( req, res = response, next ) => {
                 error: 'invalid url'
             } );
         } else {
+            console.log( newUrl );
             console.log( 'url valid' );
+            req.body.url = newUrl.href;
             next();
         }
     } catch ( error ) {
@@ -24,8 +26,7 @@ const validateUrl = ( req, res = response, next ) => {
 function isValidHttpUrl ( newUrl ) {
 
     try {
-        const search = newUrl.search === '';
-        return ( newUrl.protocol === 'http:' || newUrl.protocol === 'https:' ) && search;
+        return ( newUrl.protocol === 'http:' || newUrl.protocol === 'https:' );
     } catch ( err ) {
         return false;
     }
