@@ -6,12 +6,12 @@ const validateUrl = ( req, res = response, next ) => {
         const newUrl = new URL( req.body.url );
 
         if ( !isValidHttpUrl( newUrl ) ) {
+            console.log( 'Invalid', newUrl );
             res.status( 200 ).json( {
                 error: 'invalid url'
             } );
         } else {
-            console.log( newUrl );
-            console.log( 'url valid' );
+            console.log( 'Valid', newUrl );
             req.body.url = newUrl.href;
             next();
         }
