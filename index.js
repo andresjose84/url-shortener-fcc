@@ -26,4 +26,4 @@ app.use( express.json() );
 app.use( '/api', require( './routes/shorturl' ) );
 
 
-app.listen( port, () => console.log( `Header parser app listening on port ${ port }!` ) );
+app.listen( port, () => console.log( `Shorter url app listening on port ${ port }!` ) );
